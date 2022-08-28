@@ -1,0 +1,26 @@
+{
+   "title": "Pi-Sat GPIO Demo initialization file",
+   "description": [ "Define runtime configurations",
+                    "GPIO Pin is the GPIO definition and not the physical pin number"],
+   "config": {
+      
+      "APP_CFE_NAME": "GPIO_DEMO",
+      "APP_PERF_ID":  128,
+      
+      "APP_CMD_PIPE_NAME":  "GPIO_DEMO_CMD",
+      "APP_CMD_PIPE_DEPTH": 10,
+      
+      "GPIO_DEMO_CMD_TOPICID"    : 6416,
+      "GPIO_DEMO_SEND_HK_TOPICID": 6417,
+      "GPIO_DEMO_HK_TLM_TOPICID" : 2320,
+
+      "CHILD_NAME":       "GPIO_DEMO_CHILD",
+      "CHILD_PERF_ID":    44,
+      "CHILD_STACK_SIZE": 16384,
+      "CHILD_PRIORITY":   80,
+
+      "CTRL_OUT_PIN" :   18,
+      "CTRL_ON_TIME" : 3000,
+      "CTRL_OFF_TIME": 6000
+  }
+}
