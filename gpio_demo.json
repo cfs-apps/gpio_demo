@@ -1,13 +1,16 @@
-{ "app": {
+{
+
+   "app": {
    
    "title": "GPIO_DEMO",
    "version": "0.9.0",
-   "owner": "OpenSatkit",
-   "url": "https://github.com/OpenSatKit-Apps/gpio_demo",
+   "supplier": "Open STEMware",
+   "copyright": "bitValence",
+   "url": "https://github.com/cfs-apps/gpio_demo",
 
    "description": [
       "This serves as a Raspberry Pi demo app. It use the GPIO interface to turn",
-      "an LED on/off." 
+      "and off an LED." 
    ],
 
    "cfs": {
@@ -20,10 +23,11 @@
       "load_addr": 0,
       "exception-action": 0,
       "app-framework": "osk",
-      "tables": ["gpio_demo_ini.json"],
-      "cmd-mid": "GPIO_DEMO_CMD_MID"
-   }
-   
+      "tables": ["gpio_demo_ini.json"]
+   },
+
+   "requires": ["osk_c_fw", "pi_iolib"]
+
 }}
 
 
