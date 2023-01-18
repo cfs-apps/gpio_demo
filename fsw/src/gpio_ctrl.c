@@ -61,6 +61,9 @@ void GPIO_CTRL_Constructor(GPIO_CTRL_Class_t *GpioCtrlPtr, INITBL_Class_t* IniTb
    GpioCtrl = GpioCtrlPtr;
    
    memset(GpioCtrl, 0, sizeof(GPIO_CTRL_Class_t));
+   GpioCtrl->OutPin  = INITBL_GetIntConfig(IniTbl, CFG_CTRL_OUT_PIN);
+   GpioCtrl->OnTime  = INITBL_GetIntConfig(IniTbl, CFG_CTRL_ON_TIME);
+   GpioCtrl->OffTime = INITBL_GetIntConfig(IniTbl, CFG_CTRL_OFF_TIME);
    
    if (gpio_map() < 0) // map peripherals
    {
@@ -72,13 +75,9 @@ void GPIO_CTRL_Constructor(GPIO_CTRL_Class_t *GpioCtrlPtr, INITBL_Class_t* IniTb
    else
    {
       GpioCtrl->IsMapped = true;  
+      gpio_out(GpioCtrl->OutPin);
    }
    
-   GpioCtrl->OutPin  = INITBL_GetIntConfig(IniTbl, CFG_CTRL_OUT_PIN);
-   gpio_out(GpioCtrl->OutPin);
-
-   GpioCtrl->OnTime  = INITBL_GetIntConfig(IniTbl, CFG_CTRL_ON_TIME);
-   GpioCtrl->OffTime = INITBL_GetIntConfig(IniTbl, CFG_CTRL_OFF_TIME);
    
 } /* End GPIO_CTRL_Constructor() */
 

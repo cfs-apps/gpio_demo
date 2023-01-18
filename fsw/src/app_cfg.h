@@ -37,7 +37,7 @@
 //#include "gpio_demo_eds_designparameters.h"
 
 #include "gpio_demo_platform_cfg.h"
-#include "osk_c_fw.h"
+#include "app_c_fw.h"
 
 
 /******************************************************************************
@@ -112,15 +112,6 @@ DECLARE_ENUM(Config,APP_CONFIG)
 
 
 /******************************************************************************
-** Command Macros
-** - Load/dump table definitions are placeholders for a JSON table
-*/
-
-#define GPIO_DEMO_TBL_LOAD_CMD_FC      (CMDMGR_APP_START_FC + 0)
-#define GPIO_DEMO_TBL_DUMP_CMD_FC      (CMDMGR_APP_START_FC + 1)
-
-
-/******************************************************************************
 ** Event Macros
 **
 ** Define the base event message IDs used by each object/component used by the
@@ -128,8 +119,8 @@ DECLARE_ENUM(Config,APP_CONFIG)
 ** exceeded so it is the developer's responsibility to verify the ranges. 
 */
 
-#define GPIO_DEMO_BASE_EID  (OSK_C_FW_APP_BASE_EID +  0)
-#define GPIO_CTRL_BASE_EID  (OSK_C_FW_APP_BASE_EID + 20)
+#define GPIO_DEMO_BASE_EID  (APP_C_FW_APP_BASE_EID +  0)
+#define GPIO_CTRL_BASE_EID  (APP_C_FW_APP_BASE_EID + 20)
 
 
 #endif /* _app_cfg_ */

@@ -9,7 +9,7 @@
    "url": "https://github.com/cfs-apps/gpio_demo",
 
    "description": [
-      "This serves as a Raspberry Pi demo app. It use the GPIO interface to turn",
+      "Raspberry Pi demo app. It uses the GPIO interface to turn",
       "and off an LED." 
    ],
 
@@ -26,7 +26,7 @@
       "tables": ["gpio_demo_ini.json"]
    },
 
-   "requires": ["osk_c_fw", "pi_iolib"]
+   "requires": ["app_c_fw", "pi_iolib"]
 
 }}
 

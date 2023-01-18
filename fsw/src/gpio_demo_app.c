@@ -130,7 +130,7 @@ bool GPIO_DEMO_NoOpCmd(void* ObjDataPtr, const CFE_MSG_Message_t *MsgPtr)
 ** Function: GPIO_DEMO_ResetAppCmd
 **
 ** Notes:
-**   1. No need to pass an object reference to contained objects becuase they
+**   1. No need to pass an object reference to contained objects because they
 **      already have a reference from when they were constructed
 **
 */
@@ -155,7 +155,7 @@ bool GPIO_DEMO_ResetAppCmd(void* ObjDataPtr, const CFE_MSG_Message_t *MsgPtr)
 static int32 InitApp(void)
 {
 
-   int32 Status = OSK_C_FW_CFS_ERROR;
+   int32 Status = APP_C_FW_CFS_ERROR;
    
    CHILDMGR_TaskInit_t ChildTaskInit;
    
@@ -174,7 +174,7 @@ static int32 InitApp(void)
 
       /* Constructor sends error events */    
       ChildTaskInit.TaskName  = INITBL_GetStrConfig(INITBL_OBJ, CFG_CHILD_NAME);
-      ChildTaskInit.PerfId    = INITBL_GetIntConfig(INITBL_OBJ, CHILD_PERF_ID);
+      ChildTaskInit.PerfId    = INITBL_GetIntConfig(INITBL_OBJ, CFG_CHILD_PERF_ID);
       ChildTaskInit.StackSize = INITBL_GetIntConfig(INITBL_OBJ, CFG_CHILD_STACK_SIZE);
       ChildTaskInit.Priority  = INITBL_GetIntConfig(INITBL_OBJ, CFG_CHILD_PRIORITY);
       Status = CHILDMGR_Constructor(CHILDMGR_OBJ, 
@@ -262,7 +262,7 @@ static int32 ProcessCommands(void)
          {
             
             CFE_EVS_SendEvent(GPIO_DEMO_INVALID_MID_EID, CFE_EVS_EventType_ERROR,
-                              "Received invalid command packet, MID = 0x%08X",
+                              "Received invalid command packet, MID = 0x%04X",
                               CFE_SB_MsgIdToValue(MsgId));
          } 
 

@@ -1,5 +1,5 @@
 {
-   "title": "Pi-Sat GPIO Demo initialization file",
+   "title": "Raspberry Pi GPIO Demo initialization file",
    "description": [ "Define runtime configurations",
                     "GPIO Pin is the GPIO definition and not the physical pin number"],
    "config": {

@@ -1,2 +1,2 @@
 # gpio_demo
-Example app controlling a GPIO pin that can be used as a starting point for more sophisticated apps.
+Raspberry Pi app demonstrating how to control a GPIO pin. This app can be used as a starting point for more sophisticated apps.
