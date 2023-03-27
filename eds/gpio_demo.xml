@@ -54,14 +54,14 @@
     
       <ContainerDataType name="HkTlm_Payload" shortDescription="App's state and status summary, 'housekeeping data'">
         <EntryList>
-          <Entry name="ValidCmdCnt"    type="BASE_TYPES/uint16" />
-          <Entry name="InvalidCmdCnt"  type="BASE_TYPES/uint16" />
-          <Entry name="CtrlIsMapped"   type="BASE_TYPES/uint8"  />
-          <Entry name="CtrlOutPin"     type="BASE_TYPES/uint8"  />
-          <Entry name="CtrlLedOn"      type="BASE_TYPES/uint8"  />
-          <Entry name="CtrlSpare"      type="BASE_TYPES/uint8"  />
-          <Entry name="CtrlOnTime"     type="BASE_TYPES/uint16" />
-          <Entry name="CtrlOffTime"    type="BASE_TYPES/uint16" />
+          <Entry name="ValidCmdCnt"    type="BASE_TYPES/uint16"     />
+          <Entry name="InvalidCmdCnt"  type="BASE_TYPES/uint16"     />
+          <Entry name="CtrlIsMapped"   type="APP_C_FW/BooleanUint8" />
+          <Entry name="CtrlOutPin"     type="BASE_TYPES/uint8"      />
+          <Entry name="CtrlLedOn"      type="APP_C_FW/BooleanUint8" />
+          <Entry name="CtrlSpare"      type="BASE_TYPES/uint8"      />
+          <Entry name="CtrlOnTime"     type="BASE_TYPES/uint16"     />
+          <Entry name="CtrlOffTime"    type="BASE_TYPES/uint16"     />
         </EntryList>
       </ContainerDataType>
       
