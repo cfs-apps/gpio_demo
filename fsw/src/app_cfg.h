@@ -50,8 +50,8 @@
 ** 1.0 - Initial release
 */
 
-#define  GPIO_DEMO_MAJOR_VER   0
-#define  GPIO_DEMO_MINOR_VER   9
+#define  GPIO_DEMO_MAJOR_VER   1
+#define  GPIO_DEMO_MINOR_VER   0
 
 
 /******************************************************************************

@@ -63,6 +63,14 @@ static void SendHousekeepingTlm(void);
 DEFINE_ENUM(Config,APP_CONFIG)  
 
 
+static CFE_EVS_BinFilter_t  EventFilters[] =
+{  
+   /* Event ID                  Mask */
+   {GPIO_CTRL_CHILD_TASK_EID,   CFE_EVS_FIRST_4_STOP}
+
+};
+
+
 /*****************/
 /** Global Data **/
 /*****************/
@@ -80,7 +88,8 @@ void GPIO_DEMO_AppMain(void)
    uint32 RunStatus = CFE_ES_RunStatus_APP_ERROR;
 
 
-   CFE_EVS_Register(NULL, 0, CFE_EVS_NO_FILTER);
+   CFE_EVS_Register(EventFilters, sizeof(EventFilters)/sizeof(CFE_EVS_BinFilter_t),
+                    CFE_EVS_EventFilter_BINARY);
 
    if (InitApp() == CFE_SUCCESS) /* Performs initial CFE_ES_PerfLogEntry() call */
    {  
@@ -138,6 +147,8 @@ bool GPIO_DEMO_NoOpCmd(void* ObjDataPtr, const CFE_MSG_Message_t *MsgPtr)
 bool GPIO_DEMO_ResetAppCmd(void* ObjDataPtr, const CFE_MSG_Message_t *MsgPtr)
 {
 
+   CFE_EVS_ResetAllFilters();
+   
    CMDMGR_ResetStatus(CMDMGR_OBJ);
    CHILDMGR_ResetStatus(CHILDMGR_OBJ);
    
