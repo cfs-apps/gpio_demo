@@ -66,7 +66,7 @@ DEFINE_ENUM(Config,APP_CONFIG)
 static CFE_EVS_BinFilter_t  EventFilters[] =
 {  
    /* Event ID                  Mask */
-   {GPIO_CTRL_CHILD_TASK_EID,   CFE_EVS_FIRST_4_STOP}
+   {GPIO_CTRL_CHILD_TASK_EID,   CFE_EVS_NO_FILTER}  // CFE_EVS_FIRST_4_STOP, CFE_EVS_NO_FILTER
 
 };
 
@@ -179,7 +179,7 @@ static int32 InitApp(void)
    
       GpioDemo.PerfId    = INITBL_GetIntConfig(INITBL_OBJ, CFG_APP_PERF_ID);
       GpioDemo.CmdMid    = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_GPIO_DEMO_CMD_TOPICID));
-      GpioDemo.SendHkMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_BC_SCH_4_SEC_TOPICID));
+      GpioDemo.SendHkMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_BC_SCH_1_HZ_TOPICID));
       
       CFE_ES_PerfLogEntry(GpioDemo.PerfId);
 
