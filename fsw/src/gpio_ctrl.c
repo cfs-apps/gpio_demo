@@ -16,7 +16,9 @@
 **    Implement the GPIO Controller Class methods
 **
 **  Notes:
-**    TODO - Consider adding a map command if it fails during init. 
+**    1. A GPIO mapping failure is unrecoverable so the child task
+**       exits. A mapping failure is most likely due to an incorrect
+**       configuration in PI_IOLIB's config.h file.  
 **
 **  References:
 **    1. OpenSatKit Object-based Application Developer's Guide.
@@ -68,7 +70,7 @@ void GPIO_CTRL_Constructor(GPIO_CTRL_Class_t *GpioCtrlPtr, INITBL_Class_t* IniTb
    if (gpio_map() < 0) // map peripherals
    {
    
-      CFE_EVS_SendEvent (GPIO_CTRL_CONSTRUCTOR_EID, CFE_EVS_EventType_ERROR, "GPIO map failed");
+      CFE_EVS_SendEvent (GPIO_CTRL_CONSTRUCTOR_EID, CFE_EVS_EventType_ERROR, "GPIO map failed. Verify your pi_iolib config.h BCM setting");
       GpioCtrl->IsMapped = false;
 
    }
@@ -85,9 +87,17 @@ void GPIO_CTRL_Constructor(GPIO_CTRL_Class_t *GpioCtrlPtr, INITBL_Class_t* IniTb
 /******************************************************************************
 ** Function: GPIO_CTRL_ChildTask
 **
+** Notes:
+**   1. Returning false causes the child task to terminate.
+**   2. Information events are sent because this is instructional code and the
+**      events provide feedback. The events are filtered so they won't flood
+**      the ground. A reset app command resets the event filter.  
+**
 */
 bool GPIO_CTRL_ChildTask(CHILDMGR_Class_t* ChildMgr)
 {
+   
+   bool RetStatus = false;
    
    if (GpioCtrl->IsMapped)
    {
@@ -102,15 +112,11 @@ bool GPIO_CTRL_ChildTask(CHILDMGR_Class_t* ChildMgr)
       CFE_EVS_SendEvent (GPIO_CTRL_CHILD_TASK_EID, CFE_EVS_EventType_INFORMATION, "GPIO pin %d off for %u milliseconds", GpioCtrl->OutPin, GpioCtrl->OffTime);
       OS_TaskDelay(GpioCtrl->OffTime);
    
+      RetStatus = true;
+   
    } /* End if mapped */
-   else
-   {
-     
-      OS_TaskDelay(2000);
    
-   }
-   
-   return true;
+   return RetStatus;
 
 } /* End GPIO_CTRL_ChildTask() */
 

@@ -66,7 +66,7 @@ DEFINE_ENUM(Config,APP_CONFIG)
 static CFE_EVS_BinFilter_t  EventFilters[] =
 {  
    /* Event ID                  Mask */
-   {GPIO_CTRL_CHILD_TASK_EID,   CFE_EVS_NO_FILTER}  // CFE_EVS_FIRST_4_STOP, CFE_EVS_NO_FILTER
+   {GPIO_CTRL_CHILD_TASK_EID,   CFE_EVS_FIRST_4_STOP}  // Use CFE_EVS_NO_FILTER to see all events
 
 };
 
@@ -318,7 +318,7 @@ static void SendHousekeepingTlm(void)
    HkTlmPayload->CtrlOutPin   = GpioDemo.GpioCtrl.OutPin;
    
    HkTlmPayload->CtrlLedOn    = GpioDemo.GpioCtrl.LedOn;
-   HkTlmPayload->CtrlSpare    = 5;
+   HkTlmPayload->CtrlSpare    = 0;
          
    HkTlmPayload->CtrlOnTime   = GpioDemo.GpioCtrl.OnTime;
    HkTlmPayload->CtrlOffTime  = GpioDemo.GpioCtrl.OffTime;
