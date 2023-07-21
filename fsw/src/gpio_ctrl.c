@@ -104,12 +104,14 @@ bool GPIO_CTRL_ChildTask(CHILDMGR_Class_t* ChildMgr)
       
       gpio_set(GpioCtrl->OutPin);
       GpioCtrl->LedOn = true;
-      CFE_EVS_SendEvent (GPIO_CTRL_CHILD_TASK_EID, CFE_EVS_EventType_INFORMATION, "GPIO pin %d on for %u milliseconds", GpioCtrl->OutPin, GpioCtrl->OnTime);
+      CFE_EVS_SendEvent (GPIO_CTRL_CHILD_TASK_EID, CFE_EVS_EventType_INFORMATION, 
+                         "GPIO pin %d on for %u milliseconds", GpioCtrl->OutPin, GpioCtrl->OnTime);
       OS_TaskDelay(GpioCtrl->OnTime);
     
       gpio_clr(GpioCtrl->OutPin);
       GpioCtrl->LedOn = false;
-      CFE_EVS_SendEvent (GPIO_CTRL_CHILD_TASK_EID, CFE_EVS_EventType_INFORMATION, "GPIO pin %d off for %u milliseconds", GpioCtrl->OutPin, GpioCtrl->OffTime);
+      CFE_EVS_SendEvent (GPIO_CTRL_CHILD_TASK_EID, CFE_EVS_EventType_INFORMATION, 
+                         "GPIO pin %d off for %u milliseconds", GpioCtrl->OutPin, GpioCtrl->OffTime);
       OS_TaskDelay(GpioCtrl->OffTime);
    
       RetStatus = true;
